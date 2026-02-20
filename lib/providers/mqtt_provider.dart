@@ -23,8 +23,10 @@ class MqttProvider extends ChangeNotifier {
   final Logger _logger = Logger();
 
   // Configuration MQTT
-  static const String _brokerAddress = '10.31.252.78';
+  static const String _brokerAddress = '10.66.211.99';
   static const int _brokerPort = 1884;
+  static const String brokerUser = "pi";
+  static const String brokerPass = "raspberry";
 
   // Getters
   bool get isConnected => _isConnected;
@@ -40,7 +42,13 @@ class MqttProvider extends ChangeNotifier {
   }
 
   void _initializeMqttClient() {
-    _client = MqttServerClient(_brokerAddress, '');
+    _client = MqttServerClient(_brokerAddress, 'android-client');
+
+    final connMessage = MqttConnectMessage()
+      .authenticateAs(brokerUser, brokerPass)
+      .startClean();
+    _client.connectionMessage = connMessage;
+
     _client.port = _brokerPort;
     _client.keepAlivePeriod = 20;
     _client.onConnected = _onConnected;
