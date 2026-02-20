@@ -1,0 +1,50 @@
+name: mqtt_home_control
+description: "Application mobile Flutter pour contrôler les prises intelligentes via MQTT"
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  
+  # MQTT
+  mqtt5_client: ^4.8.0
+  
+  # State management
+  provider: ^6.0.0
+  
+  # UI Components
+  cupertino_icons: ^1.0.2
+  flutter_svg: ^2.0.0
+  
+  # Utilities
+  intl: ^0.19.0
+  get_it: ^7.6.0
+  
+  # Logging
+  logger: ^2.0.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+
+flutter:
+  uses-material-design: true
+  
+  assets:
+    - assets/images/
+    - assets/icons/
+  
+  fonts:
+    - family: Poppins
+      fonts:
+        - asset: assets/fonts/Poppins-Regular.ttf
+        - asset: assets/fonts/Poppins-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/Poppins-SemiBold.ttf
+          weight: 600
